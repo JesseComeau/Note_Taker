@@ -13,7 +13,7 @@ const writeToFile = (destination, content) =>
 const readAndAppend = (content, file) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
-      console.error(err);
+      console.error("read and append", err);
     } else {
       const parsedData = JSON.parse(data);
       parsedData.push(content);
@@ -22,4 +22,13 @@ const readAndAppend = (content, file) => {
   });
 };
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+const readAndDelete = (content, file) => {
+
+  fs.writeFile(file, JSON.stringify(content), function(err){
+    if(err) {
+        throw error
+    }
+})
+}
+
+module.exports = { readFromFile, writeToFile, readAndAppend, readAndDelete };
